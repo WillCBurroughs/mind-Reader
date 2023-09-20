@@ -1,4 +1,13 @@
 
+// Holds size 
+let small;
+
+// Need quick and easy way to find out screen size 
+if(window.innerWidth < 768){
+    small = true;
+}  else{
+    small = false;
+}
 
 let MindReader = {
 
@@ -54,9 +63,34 @@ let MindReader = {
 
     // Will be used to make the first page 
     createFirstPage(){
+
+        // Text that appears on top of screen 
         let initialText = document.createElement("h2");
-        initialText.textContent = "Can this appear"; 
-        document.body.appendChild(initialText);
+        initialText.textContent = "I can read your mind"; 
+        initialText.style.color = "gray"
+
+        if(small){
+            initialText.style.fontSize = "70px";
+        } else{
+            initialText.style.fontSize = "90px";
+        }
+
+        // Holds column values 
+        let col = document.createElement("div"); 
+        col.classList.add("col", "col-9", "mx-auto");
+        col.appendChild(initialText);        
+
+        // // Row that will hold cols
+        // let rowBuilt = document.createElement("div")
+        // rowBuilt.classList.add("row", "bg-success");
+        // holdTextContainer.appendChild(col);
+
+        // // Container that will be used 
+        // let holdTextContainer = document.createElement("div");
+        // holdTextContainer.classList.add("container");
+        // holdTextContainer.appendChild(rowBuilt);
+
+        document.body.appendChild(col);
     }
 
 
