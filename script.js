@@ -1,4 +1,4 @@
-localStorage.clear();
+
 let MindReader = {
 
     // Shows default page Value
@@ -28,7 +28,16 @@ let MindReader = {
 
         // Used for setting pageValue to incremented value
         this.setPage(this.pageValue)
+    },
+
+    // Used to clear every element off of the page 
+
+    clearPage() {
+        while (document.body.childElementCount > 0) {
+            document.body.removeChild(document.body.firstChild);
+        }
     }
+
 
 }
 
@@ -41,10 +50,12 @@ console.log(MindReader.pageValue);
 
 // Initially sets mindReader pageValue 
 
-
 MindReader.displayPage(); 
 
 // Saves value after pushing to next page 
 MindReader.setPage(); 
+
+// Testing if clears page 
+MindReader.clearPage();
 
 
