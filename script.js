@@ -1,4 +1,5 @@
 
+
 let MindReader = {
 
     // Shows default page Value
@@ -31,17 +32,39 @@ let MindReader = {
     },
 
     // Used to clear every element off of the page 
-
     clearPage() {
         while (document.body.childElementCount > 0) {
             document.body.removeChild(document.body.firstChild);
         }
+    },
+
+    // Function that will be used to create Page Based on value of this.pageValue
+
+    createPage(){
+
+        // This will check the pageValue and make the relevant page
+        switch(this.pageValue){
+            case 1:
+            this.createFirstPage()
+            break; 
+
+        }
+
+    },
+
+    // Will be used to make the first page 
+    createFirstPage(){
+        let initialText = document.createElement("h2");
+        initialText.textContent = "Can this appear"; 
+        document.body.appendChild(initialText);
     }
+
+
 
 
 }
 
-// Condition value is already declared
+// Condition value is already declared, set value equal to saved value 
 if(localStorage.getItem("pageVal") != null){
     MindReader.pageValue = MindReader.getVal();
 }
@@ -55,7 +78,10 @@ MindReader.displayPage();
 // Saves value after pushing to next page 
 MindReader.setPage(); 
 
-// Testing if clears page 
-MindReader.clearPage();
+// First clear page 
+MindReader.clearPage(); 
+
+MindReader.createFirstPage();
+
 
 
