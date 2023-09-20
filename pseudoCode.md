@@ -1,5 +1,5 @@
 
-#Some PseudoCode 
+# Some PseudoCode 
 
 Need to give state defaultValue if it currently doesn’t have a value and is equal to null
 Can call function to update value of someNumber 
@@ -24,3 +24,11 @@ Save page user is on as a number and use a switch statement to determine what to
 Need to change state of first screen or not and load in refresh button based off of that 
 Need to atomic design button
 Need to pick text/color pallette 
+
+## Wireframe 
+
+Need to design what I want very first version to look like and use that as a design guide. I will be using Figma for the first design 
+
+## First Version 
+
+Make a javascript object and add methods that will create all the objects on the first screen that we want to appear. 
