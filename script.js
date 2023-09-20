@@ -1,4 +1,3 @@
-
 localStorage.clear();
 let MindReader = {
 
@@ -16,9 +15,9 @@ let MindReader = {
     },
 
     // Used to set the value everytime value is changed or incremented
-    setPage(value){
+    setPage(){
 
-        localStorage.setItem("pageVal", value);
+        localStorage.setItem("pageVal", this.pageValue);
     },    
 
     // Allows for turning page
@@ -42,11 +41,10 @@ console.log(MindReader.pageValue);
 
 // Initially sets mindReader pageValue 
 
-// Testing that page value changes
-MindReader.incrementPage();
 
 MindReader.displayPage(); 
 
-MindReader.setPage(MindReader.pageValue); 
+// Saves value after pushing to next page 
+MindReader.setPage(); 
 
 
