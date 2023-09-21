@@ -220,6 +220,7 @@ let MindReader = {
         
         let holdSecond = document.createElement("div"); 
         holdSecond.classList.add("col", "col-9", "mx-auto");
+        holdSecond.style.display = "flex";
 
         NextButton.addEventListener("click", () => {
 
@@ -353,7 +354,7 @@ let MindReader = {
             NextButton.style.marginTop = "20%";
         } else {
             NextButton.style.height = "120px";
-            NextButton.style.marginTop = "15%";
+            NextButton.style.marginTop = "12%";
             nextButtonText.style.fontSize = "60px";
         }
         
@@ -373,7 +374,8 @@ let MindReader = {
         
         let holdSecond = document.createElement("div"); 
         holdSecond.classList.add("col", "col-9", "mx-auto");
-        
+        holdSecond.style.display = "flex";
+
         NextButton.addEventListener("click", () => {
 
             // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
@@ -409,10 +411,10 @@ let MindReader = {
         if(small){
             holdText.style.marginTop = "80%"; 
         } else{
-            holdText.style.marginTop = "40%"; 
+            holdText.style.marginTop = "35%"; 
         }
         
-        holdText.style.marginLeft = "60%";
+        holdText.style.marginLeft = "90%";
 
         // Need to add eventListener to holdText to call 
         holdText.addEventListener("click", () => {
@@ -452,9 +454,9 @@ let MindReader = {
 
         
         if(small){
-            holdReset.style.marginTop = "30%"; 
+            holdReset.style.marginTop = "10%"; 
         } else{
-            holdReset.style.marginTop = "18%"; 
+            holdReset.style.marginTop = "15%"; 
         }
         
         holdReset.style.marginLeft = "60%";
@@ -503,7 +505,7 @@ let MindReader = {
         if(small){
 
             NextButton.style.height = "100px";
-            NextButton.style.marginTop = "20%";
+            NextButton.style.marginTop = "30%";
         } else {
             NextButton.style.height = "120px";
             NextButton.style.marginTop = "15%";
@@ -519,13 +521,14 @@ let MindReader = {
         NextButton.style.backgroundColor = "#8cd8e2";
 
         if(small){
-            secondText.style.fontSize = "70px";
+            secondText.style.fontSize = "50px";
         } else{
             secondText.style.fontSize = "90px";
         }
         
         let holdSecond = document.createElement("div"); 
         holdSecond.classList.add("col", "col-9", "mx-auto");
+
 
         NextButton.addEventListener("click", () => {
 
@@ -605,9 +608,9 @@ let MindReader = {
 
         
         if(small){
-            holdReset.style.marginTop = "30%"; 
+            holdReset.style.marginTop = "15%"; 
         } else{
-            holdReset.style.marginTop = "18%"; 
+            holdReset.style.marginTop = "8%"; 
         }
         
         holdReset.style.marginLeft = "60%";

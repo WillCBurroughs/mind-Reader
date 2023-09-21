@@ -36,3 +36,7 @@ Make a javascript object and add methods that will create all the objects on the
 ## Second Version
 
 Add button that calls function to add 1 to pageValue. Then call function that will createPages based on pageValue. 
+
+## Finished version
+
+After making a version that has all of the basic conditions that I need. I think I'm going back through the code to make Everything look more like in the file provided (Though I really have to keep myself from making the fun project first ;) 
