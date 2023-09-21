@@ -1,4 +1,6 @@
 
+localStorage.clear();
+
 // Holds size 
 let small;
 
@@ -692,6 +694,34 @@ let MindReader = {
 
         // Allows us to save this value 
         localStorage.setItem("displayVal", this.displayValue);
+
+
+        // Need to add button to advance to next page 
+
+        let NextButton = document.createElement("div");
+        let nextButtonText = document.createElement("h3");
+
+        NextButton.classList.add("col", "col-6", "mx-auto");
+
+        nextButtonText.textContent = "Next"
+        nextButtonText.style.fontSize = "40px"
+
+        nextButtonText.style.color = "white";
+
+        NextButton.style.textAlign = "center";
+        NextButton.style.display = "flex"; 
+
+        NextButton.style.border = "2px solid black";
+
+        
+        NextButton.style.backgroundColor = "#8cd8e2";
+        
+        
+        NextButton.appendChild(nextButtonText);
+
+        document.body.appendChild(NextButton);
+
+
     },
 
     createSixthPage(){
@@ -703,11 +733,6 @@ let MindReader = {
     createQuestForBucees(){
 
     }
-
-    // Need to have array added to this. Need to randomize array 
-    // Can do this by storing value using math.random 
-    // Continuing pattern of what to push with random variable and % 
-
 
 
 
