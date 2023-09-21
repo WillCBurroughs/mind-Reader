@@ -14,6 +14,9 @@ let MindReader = {
     // Possible values will be in this array
     possibleValues: ["&", "@", "$", "B", "%", "#", "~", "*", "?"],
 
+    // Value that will be shown at end of project (Need to go through local)
+    displayValue: "&",
+
     // Shows default page Value
     pageValue: 1,
 
@@ -684,9 +687,16 @@ let MindReader = {
 
         }
 
+        // This should always set the value at displayValue to 0 
+        this.displayValue = this.possibleValues[(randomizeVal)];
+
+        // Allows us to save this value 
+        localStorage.setItem("displayVal", this.displayValue);
     },
 
     createSixthPage(){
+
+        
 
     },
 
