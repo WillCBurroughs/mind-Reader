@@ -1,5 +1,4 @@
 
-localStorage.clear();
 
 // Holds size 
 let small;
@@ -374,7 +373,7 @@ let MindReader = {
         
         let holdSecond = document.createElement("div"); 
         holdSecond.classList.add("col", "col-9", "mx-auto");
-
+        
         NextButton.addEventListener("click", () => {
 
             // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
@@ -715,16 +714,152 @@ let MindReader = {
 
         
         NextButton.style.backgroundColor = "#8cd8e2";
+
+        NextButton.style.alignItems = "center"; 
+        NextButton.style.justifyContent = "center"; 
         
+        if(small){
+
+            NextButton.style.height = "100px";
+            NextButton.style.marginTop = "20%";
+        } else {
+            NextButton.style.height = "120px";
+            NextButton.style.marginTop = "15%";
+            nextButtonText.style.fontSize = "60px";
+        }
         
         NextButton.appendChild(nextButtonText);
 
         document.body.appendChild(NextButton);
 
+        // Need to add button that allows for resetting to first page 
+// Testing text 
+        let resetText = document.createElement("h3");
+        resetText.textContent = "Reset"
+        resetText.fontSize = "60px";
+        resetText.backgroundColor = "blue"
+        resetText.style.zIndex = "5";
+        resetText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdReset = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+       holdReset.style.height = "100px"; 
+       holdReset.style.width = "100px";
+       holdReset.style.borderRadius = "50%";
+       holdReset.style.backgroundColor = "white";
+       holdReset.style.border = "2px solid black";
+       holdReset.style.textAlign = "center";
+       holdReset.style.display = "flex"; 
+
+       holdReset.style.alignItems = "center"; 
+       holdReset.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdReset.style.marginTop = "30%"; 
+        } else{
+            holdReset.style.marginTop = "18%"; 
+        }
+        
+        holdReset.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdReset.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferReset();
+
+        })
+
+        // Add Text to div 
+        holdReset.appendChild(resetText);
+        document.body.appendChild(holdReset)
+        
+        // Need to move to next page when clicked 
+        NextButton.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
 
     },
 
     createSixthPage(){
+
+
+    // Need to add value to top of page 
+
+    let secondText = document.createElement("h2");
+    secondText.textContent = String(localStorage.getItem("displayVal")); 
+    secondText.style.color = "gray"
+
+    if(small){
+        secondText.style.fontSize = "70px";
+    } else{
+        secondText.style.fontSize = "90px";
+    }
+
+    let holdSecond = document.createElement("div"); 
+    holdSecond.classList.add("col", "col-9", "mx-auto");
+    holdSecond.style.display = "flex";
+    holdSecond.style.textAlign = "center";
+
+        // Allows resetting to first page 
+        // Testing text 
+        let resetText = document.createElement("h3");
+        resetText.textContent = "Reset"
+        resetText.fontSize = "60px";
+        resetText.backgroundColor = "blue"
+        resetText.style.zIndex = "5";
+        resetText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdReset = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+       holdReset.style.height = "100px"; 
+       holdReset.style.width = "100px";
+       holdReset.style.borderRadius = "50%";
+       holdReset.style.backgroundColor = "white";
+       holdReset.style.border = "2px solid black";
+       holdReset.style.textAlign = "center";
+       holdReset.style.display = "flex"; 
+
+       holdReset.style.alignItems = "center"; 
+       holdReset.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdReset.style.marginTop = "30%"; 
+        } else{
+            holdReset.style.marginTop = "18%"; 
+        }
+        
+        holdReset.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdReset.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferReset();
+
+        })
+
+        holdSecond.classList.add("col", "col-9", "mx-auto");
+        holdSecond.style.alignContent = "center";
+        holdSecond.style.justifyContent = "center";
+
+        // Adds answer 
+        document.body.appendChild(holdSecond);
+
+        holdSecond.appendChild(secondText);  
+
+        // Add Text to div 
+        holdReset.appendChild(resetText);
+        document.body.appendChild(holdReset)
 
         
 
