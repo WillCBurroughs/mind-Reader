@@ -1,4 +1,3 @@
-localStorage.clear(); 
 
 // Holds size 
 let small;
@@ -11,6 +10,9 @@ if(window.innerWidth < 768){
 }
 
 let MindReader = {
+
+    // Possible values will be in this array
+    possibleValues: ["&", "@", "$", "B", "%", "#", "~", "*", "?"],
 
     // Shows default page Value
     pageValue: 1,
@@ -59,6 +61,21 @@ let MindReader = {
             break; 
             case 2: 
             this.createSecondPage();
+            break;
+            case 3:
+            this.createThirdPage();
+            break;
+            case 4: 
+            this.createFourthPage();
+            break; 
+            case 5: 
+            this.createFifthPage();
+            break; 
+            case 6: 
+            this.createSixthPage(); 
+            break; 
+            case 7: 
+            this.createQuestForBucees(); 
             break;
         }
 
@@ -302,7 +319,387 @@ let MindReader = {
 
         // Add div to page 
         document.body.appendChild(holdReset)
+    },
+
+    createThirdPage(){
+        // Violates DRY, but don't want to use CSS to make classes all JS 
+        let secondText = document.createElement("h2");
+        secondText.textContent = "Add both digits together to get a new number"; 
+        secondText.style.color = "gray"
+
+        let NextButton = document.createElement("div");
+        let nextButtonText = document.createElement("h3");
+
+        NextButton.classList.add("col", "col-6", "mx-auto");
+
+        nextButtonText.textContent = "Next"
+        nextButtonText.style.fontSize = "40px"
+
+        nextButtonText.style.color = "white";
+
+        NextButton.style.textAlign = "center";
+        NextButton.style.display = "flex"; 
+
+        NextButton.style.border = "2px solid black";
+
+        // Sets NextButton height based on screen size
+        if(small){
+
+            NextButton.style.height = "100px";
+            NextButton.style.marginTop = "20%";
+        } else {
+            NextButton.style.height = "120px";
+            NextButton.style.marginTop = "15%";
+            nextButtonText.style.fontSize = "60px";
+        }
+        
+
+        NextButton.style.alignItems = "center"; 
+        NextButton.style.justifyContent = "center"; 
+        
+        NextButton.appendChild(nextButtonText);
+
+        NextButton.style.backgroundColor = "#8cd8e2";
+
+        if(small){
+            secondText.style.fontSize = "70px";
+        } else{
+            secondText.style.fontSize = "90px";
+        }
+        
+        let holdSecond = document.createElement("div"); 
+        holdSecond.classList.add("col", "col-9", "mx-auto");
+
+        NextButton.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        // Need to make button in bottom corner that will reset back to first page 
+                // Testing text 
+        let testText = document.createElement("h3");
+        testText.textContent = "GO"
+        testText.fontSize = "60px";
+        testText.backgroundColor = "blue"
+        testText.style.zIndex = "5";
+        testText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdText = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+        holdText.style.height = "100px"; 
+        holdText.style.width = "100px";
+        holdText.style.borderRadius = "50%";
+        holdText.style.backgroundColor = "white";
+        holdText.style.border = "2px solid black";
+        holdText.style.textAlign = "center";
+        holdText.style.display = "flex"; 
+
+        holdText.style.alignItems = "center"; 
+        holdText.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdText.style.marginTop = "80%"; 
+        } else{
+            holdText.style.marginTop = "40%"; 
+        }
+        
+        holdText.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdText.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        holdText.appendChild(testText);
+
+        holdSecond.appendChild(secondText);   
+
+
+        // Testing text 
+        let resetText = document.createElement("h3");
+        resetText.textContent = "Reset"
+        resetText.fontSize = "60px";
+        resetText.backgroundColor = "blue"
+        resetText.style.zIndex = "5";
+        resetText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdReset = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+       holdReset.style.height = "100px"; 
+       holdReset.style.width = "100px";
+       holdReset.style.borderRadius = "50%";
+       holdReset.style.backgroundColor = "white";
+       holdReset.style.border = "2px solid black";
+       holdReset.style.textAlign = "center";
+       holdReset.style.display = "flex"; 
+
+       holdReset.style.alignItems = "center"; 
+       holdReset.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdReset.style.marginTop = "30%"; 
+        } else{
+            holdReset.style.marginTop = "18%"; 
+        }
+        
+        holdReset.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdReset.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferReset();
+
+        })
+
+        // Add Text to div 
+        holdReset.appendChild(resetText);
+
+        holdText.appendChild(testText);
+        document.body.appendChild(holdSecond);
+        document.body.appendChild(NextButton);
+
+        // Add div to page 
+        document.body.appendChild(holdReset)
+    },
+
+    createFourthPage(){
+        // Violates DRY, but don't want to use CSS to make classes all JS 
+        let secondText = document.createElement("h2");
+        secondText.textContent = "Subtract your new number from the original number"; 
+        secondText.style.color = "gray"
+
+        let NextButton = document.createElement("div");
+        let nextButtonText = document.createElement("h3");
+
+        NextButton.classList.add("col", "col-6", "mx-auto");
+
+        nextButtonText.textContent = "Next"
+        nextButtonText.style.fontSize = "40px"
+
+        nextButtonText.style.color = "white";
+
+        NextButton.style.textAlign = "center";
+        NextButton.style.display = "flex"; 
+
+        NextButton.style.border = "2px solid black";
+
+        // Sets NextButton height based on screen size
+        if(small){
+
+            NextButton.style.height = "100px";
+            NextButton.style.marginTop = "20%";
+        } else {
+            NextButton.style.height = "120px";
+            NextButton.style.marginTop = "15%";
+            nextButtonText.style.fontSize = "60px";
+        }
+        
+
+        NextButton.style.alignItems = "center"; 
+        NextButton.style.justifyContent = "center"; 
+        
+        NextButton.appendChild(nextButtonText);
+
+        NextButton.style.backgroundColor = "#8cd8e2";
+
+        if(small){
+            secondText.style.fontSize = "70px";
+        } else{
+            secondText.style.fontSize = "90px";
+        }
+        
+        let holdSecond = document.createElement("div"); 
+        holdSecond.classList.add("col", "col-9", "mx-auto");
+
+        NextButton.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        // Need to make button in bottom corner that will reset back to first page 
+                // Testing text 
+        let testText = document.createElement("h3");
+        testText.textContent = "GO"
+        testText.fontSize = "60px";
+        testText.backgroundColor = "blue"
+        testText.style.zIndex = "5";
+        testText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdText = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+        holdText.style.height = "100px"; 
+        holdText.style.width = "100px";
+        holdText.style.borderRadius = "50%";
+        holdText.style.backgroundColor = "white";
+        holdText.style.border = "2px solid black";
+        holdText.style.textAlign = "center";
+        holdText.style.display = "flex"; 
+
+        holdText.style.alignItems = "center"; 
+        holdText.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdText.style.marginTop = "80%"; 
+        } else{
+            holdText.style.marginTop = "40%"; 
+        }
+        
+        holdText.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdText.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        holdText.appendChild(testText);
+
+        holdSecond.appendChild(secondText);   
+
+
+        // Testing text 
+        let resetText = document.createElement("h3");
+        resetText.textContent = "Reset"
+        resetText.fontSize = "60px";
+        resetText.backgroundColor = "blue"
+        resetText.style.zIndex = "5";
+        resetText.style.color = "#8cd8e2"
+
+        // put text in div then put in bottomish corner
+        let holdReset = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
+
+       holdReset.style.height = "100px"; 
+       holdReset.style.width = "100px";
+       holdReset.style.borderRadius = "50%";
+       holdReset.style.backgroundColor = "white";
+       holdReset.style.border = "2px solid black";
+       holdReset.style.textAlign = "center";
+       holdReset.style.display = "flex"; 
+
+       holdReset.style.alignItems = "center"; 
+       holdReset.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdReset.style.marginTop = "30%"; 
+        } else{
+            holdReset.style.marginTop = "18%"; 
+        }
+        
+        holdReset.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdReset.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferReset();
+
+        })
+
+        // Add Text to div 
+        holdReset.appendChild(resetText);
+
+        holdText.appendChild(testText);
+        document.body.appendChild(holdSecond);
+        document.body.appendChild(NextButton);
+
+        // Add div to page 
+        document.body.appendChild(holdReset)
+    },
+
+    createFifthPage(){
+
+        // Need to randomize addding divs to page (Val will be 0-9)
+        let randomizeVal = Math.floor(Math.random() * 10);
+
+        // Need to make 99 values 
+        for(let i = 0; i <= 99; i++){
+
+            // Will hold Text 
+            let newTextToDisplay = document.createElement("h3");
+
+            // Will place Div 
+            let holdnewTextToDisplay = document.createElement("div");
+            
+            // Relevant attributes 
+            holdnewTextToDisplay.classList.add("col", "col-6", "mx-auto"); 
+            holdnewTextToDisplay.style.display = "flex";
+            holdnewTextToDisplay.style.justifyContent = "center";
+            holdnewTextToDisplay.style.alignItems = "center"; 
+
+            // Relevant Styling 
+            newTextToDisplay.style.color = "gray"; 
+            newTextToDisplay.textContent = `${i} - `;
+
+            // Randomizing and giving final value t
+            if((i + randomizeVal) % 9 == 0){
+                newTextToDisplay.textContent += this.possibleValues[0];
+            } else if((i + randomizeVal) % 9 == 1){
+                newTextToDisplay.textContent += this.possibleValues[1];
+            } else if((i + randomizeVal) % 9 == 2){
+                newTextToDisplay.textContent += this.possibleValues[2];
+            } else if((i + randomizeVal) % 9 == 3){
+                newTextToDisplay.textContent += this.possibleValues[3];
+            } else if((i + randomizeVal) % 9 == 4){
+                newTextToDisplay.textContent += this.possibleValues[4];
+            } else if((i + randomizeVal) % 9 == 5){
+                newTextToDisplay.textContent += this.possibleValues[5];
+            } else if((i + randomizeVal) % 9 == 6){
+                newTextToDisplay.textContent += this.possibleValues[6];
+            } else if((i + randomizeVal) % 9 == 7){
+                newTextToDisplay.textContent += this.possibleValues[7];
+            } else if((i + randomizeVal) % 9 == 8){
+                newTextToDisplay.textContent += this.possibleValues[8];
+            }
+
+            if(small){
+                newTextToDisplay.style.fontSize = "70px";
+            } else{
+                newTextToDisplay.style.fontSize = "90px";
+            }
+        
+            holdnewTextToDisplay.appendChild(newTextToDisplay);
+            
+            document.body.appendChild(holdnewTextToDisplay);
+
+        }
+
+    },
+
+    createSixthPage(){
+
+    },
+
+    createQuestForBucees(){
+
     }
+
+    // Need to have array added to this. Need to randomize array 
+    // Can do this by storing value using math.random 
+    // Continuing pattern of what to push with random variable and % 
+
+
+
 
 
 
