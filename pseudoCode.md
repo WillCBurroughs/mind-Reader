@@ -31,4 +31,8 @@ Need to design what I want very first version to look like and use that as a des
 
 ## First Version 
 
-Make a javascript object and add methods that will create all the objects on the first screen that we want to appear. 
+Make a javascript object and add methods that will create all the objects on the first screen that we want to appear. Now finished with first version.
+
+## Second Version
+
+Add button that calls function to add 1 to pageValue. Then call function that will createPages based on pageValue. 

@@ -1,3 +1,4 @@
+localStorage.clear(); 
 
 // Holds size 
 let small;
@@ -37,7 +38,7 @@ let MindReader = {
         this.pageValue++;
 
         // Used for setting pageValue to incremented value
-        this.setPage(this.pageValue)
+        this.setPage();
     },
 
     // Used to clear every element off of the page 
@@ -54,9 +55,11 @@ let MindReader = {
         // This will check the pageValue and make the relevant page
         switch(this.pageValue){
             case 1:
-            this.createFirstPage()
+            this.createFirstPage();
             break; 
-
+            case 2: 
+            this.createSecondPage();
+            break;
         }
 
     },
@@ -79,20 +82,124 @@ let MindReader = {
         let col = document.createElement("div"); 
         col.classList.add("col", "col-9", "mx-auto");
         col.appendChild(initialText);        
+        
+        // Testing text 
+        let testText = document.createElement("h3");
+        testText.textContent = "GO"
+        testText.fontSize = "60px";
+        testText.backgroundColor = "blue"
+        testText.style.zIndex = "5";
+        testText.style.color = "#8cd8e2"
 
-        // // Row that will hold cols
-        // let rowBuilt = document.createElement("div")
-        // rowBuilt.classList.add("row", "bg-success");
-        // holdTextContainer.appendChild(col);
+        // put text in div then put in bottomish corner
+        let holdText = document.createElement("div");
+       // holdText.classList.add("col", "col-3", "bg-success", "mx-auto");
 
-        // // Container that will be used 
-        // let holdTextContainer = document.createElement("div");
-        // holdTextContainer.classList.add("container");
-        // holdTextContainer.appendChild(rowBuilt);
+        holdText.style.height = "100px"; 
+        holdText.style.width = "100px";
+        holdText.style.borderRadius = "50%";
+        holdText.style.backgroundColor = "white";
+        holdText.style.border = "2px solid black";
+        holdText.style.textAlign = "center";
+        holdText.style.display = "flex"; 
 
+        holdText.style.alignItems = "center"; 
+        holdText.style.justifyContent = "center"; 
+
+        
+        if(small){
+            holdText.style.marginTop = "80%"; 
+        } else{
+            holdText.style.marginTop = "40%"; 
+        }
+        
+        holdText.style.marginLeft = "60%";
+
+        // Need to add eventListener to holdText to call 
+        holdText.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        holdText.appendChild(testText);
         document.body.appendChild(col);
-    }
+        document.body.appendChild(holdText);
+    },
 
+    transferClear(){
+
+        // First clear page 
+        // Then iterate page 
+        // Then build page 
+        this.clearPage();
+        this.incrementPage();
+        this.createPage(); 
+    },
+
+    createSecondPage(){
+
+        // Violates DRY, but don't want to use CSS to make classes all JS 
+        let secondText = document.createElement("h2");
+        secondText.textContent = "Pick a Number From 01 - 99"; 
+        secondText.style.color = "gray"
+
+        let NextButton = document.createElement("div");
+        let nextButtonText = document.createElement("h3");
+
+        NextButton.classList.add("col", "col-6", "mx-auto");
+
+        nextButtonText.textContent = "Next"
+        nextButtonText.style.fontSize = "40px"
+
+        nextButtonText.style.color = "white";
+
+        NextButton.style.textAlign = "center";
+        NextButton.style.display = "flex"; 
+
+        NextButton.style.border = "2px solid black";
+
+        // Sets NextButton height based on screen size
+        if(small){
+
+            NextButton.style.height = "100px";
+            NextButton.style.marginTop = "20%";
+        } else {
+            NextButton.style.height = "120px";
+            NextButton.style.marginTop = "15%";
+            nextButtonText.style.fontSize = "60px";
+        }
+        
+
+        NextButton.style.alignItems = "center"; 
+        NextButton.style.justifyContent = "center"; 
+        
+        NextButton.appendChild(nextButtonText);
+
+        NextButton.style.backgroundColor = "#8cd8e2";
+
+        if(small){
+            secondText.style.fontSize = "70px";
+        } else{
+            secondText.style.fontSize = "90px";
+        }
+        
+        let holdSecond = document.createElement("div"); 
+        holdSecond.classList.add("col", "col-9", "mx-auto");
+
+        NextButton.addEventListener("click", () => {
+
+            // Have to call this with MindReader to gain access to this without using Bind (Don't know what bind does)
+            MindReader.transferClear();
+
+        })
+
+        holdSecond.appendChild(secondText);   
+
+        document.body.appendChild(holdSecond);
+        document.body.appendChild(NextButton);
+    }
 
 
 
@@ -115,7 +222,7 @@ MindReader.setPage();
 // First clear page 
 MindReader.clearPage(); 
 
-MindReader.createFirstPage();
+MindReader.createPage();
 
 
 
