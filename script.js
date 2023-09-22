@@ -6,6 +6,9 @@ let small;
 
 let bucceeSong;
 
+// Creates new people 
+let personGenerator; 
+
 // Need quick and easy way to find out screen size 
 if(window.innerWidth < 768){
     small = true;
@@ -935,7 +938,48 @@ document.body.addEventListener("keydown", (e) =>{
     if(e.key == "t"){
     
         MindReader.setPage7();
-        createSomeone();
+
+        
+        if(MindReader.pageValue == 7){
+            setInterval(function(){
+                createSomeone();
+        
+            }, 1500)
+        }
+
+
+        let buceeTitle = document.createElement("h1"); 
+        let containBucee = document.createElement("div"); 
+
+        containBucee.classList.add("col",  "col-9",  "mx-auto")
+
+        buceeTitle.style.textContent = "center";
+        buceeTitle.style.display = "absolute"; 
+
+        buceeTitle.textContent = "Quest For Buc-ee's!"
+        buceeTitle.style.color = "darkgray";
+        containBucee.style.justifyContent = "center"
+
+        buceeTitle.style.fontSize = "100px";
+
+        let buceeImage = document.createElement("img"); 
+        buceeImage.style.position = "absolute"; 
+
+        buceeImage.style.top = "200px";
+        buceeImage.style.left = "820px";
+
+        buceeImage.style.height = "500px";
+        buceeImage.style.width = "850px";
+
+        buceeImage.src = "img/bucees-logo.png";
+
+        containBucee.appendChild(buceeTitle);
+
+        document.body.appendChild(containBucee);
+
+        document.body.appendChild(buceeImage);
+
+
    }
 })
 
@@ -947,8 +991,10 @@ document.body.addEventListener("keydown", (e) =>{
 // Can check if x coordinate is greater than a certain value to say they made it to buc ees 
 function createSomeone(){
 
-    let holdPosition = 50; 
+    let playAudio = new Audio("clicked.wav");
 
+    let holdPosition = 50; 
+    let hasBeenClicked = false;
 
     // Person will be img with set height 
     let newPerson = document.createElement("img");
@@ -959,45 +1005,162 @@ function createSomeone(){
     // Consistently sized images by filling image container 
     newPerson.style.objectFit = "cover";
 
-    
+    // Will randomize Y position somewhere between 100 and 699 
+    let yPosition = Math.floor(Math.random() * 600) + 100; 
 
     // Value will be 0-6
     let randomizePerson = Math.floor(Math.random() * 7);
 
-    // generates random speed for person 
-    let randomizeSpeed = Math.floor(Math.random() * 12);
+    // generates random speed for person 3 - 14
+    let randomizeSpeed = Math.floor(Math.random() * 12) + 3;
+
+    // Add name tag to each person 
+    let labelName = document.createElement("h3"); 
+    labelName.style.textContent = "center";
+    labelName.style.color = "black"; 
+
+    // Placing label
+    labelName.style.position = "absolute"
+    labelName.style.top = yPosition + 50 + "px";
+    labelName.style.fontSize = "20px"; 
+
+    let backDiv = document.createElement("div"); 
+    backDiv.style.textContent = "center";
+    backDiv.style.backgroundColor = "black";
+
+    backDiv.style.width = "100px";
+    backDiv.style.height = "10px";
+
+    backDiv.style.position = "absolute"; 
+    backDiv.style.top = yPosition + 30 + "px";
+
+    let topDiv = document.createElement("div"); 
+    topDiv.style.backgroundColor = "red"; 
+
+    topDiv.style.width = "100px";
+    topDiv.style.height = "10px";
+
+    topDiv.style.position = "absolute"; 
+    topDiv.style.top = yPosition + 30 + "px";
+
 
     switch(randomizePerson){
         case 0: 
         newPerson.src = "img/Dylan.png";
+        labelName.textContent = "Dylan";
         break;
         case 1: 
         newPerson.src = "img/Justin-Hinged.png";
+        labelName.textContent = "Justin (Hinged)";
         break;
         case 2: 
         newPerson.src = "img/Michael-Full-Power.png";
+        labelName.textContent = "Michael (Full-Power)";
         break;
         case 3: 
         newPerson.src = "img/Michael-holding-back.png";
+        labelName.textContent = "Michael (Holding Back)"
         break; 
         case 4: 
         newPerson.src = "img/Tanner.png";
+        labelName.textContent = "Tanner";
         break; 
         case 5:
         newPerson.src = "img/Vanessa.png";
+        labelName.textContent = "Vanessa";
         break; 
         case 6: 
         newPerson.src = "img/Justin-unhinged.png";
+        labelName.textContent = "Justin (Unhinged)";
         break;
     }
 
+    newPerson.style.top = yPosition + "px";
+    labelName.style.left = holdPosition + 100 + "px";
+    
+    backDiv.style.left = holdPosition + 100 + "px";
+    backDiv.style.top = parseInt(labelName.style.top) + 25 + "px";
+
+    topDiv.style.left = holdPosition + 100 + "px";
+    topDiv.style.top = parseInt(labelName.style.top) + 25 + "px";
+
+
     setInterval(function(){
         holdPosition += randomizeSpeed;
+
+
         newPerson.style.left = holdPosition + "px";
+        
+        labelName.style.left = holdPosition + 100 + "px";
+
+        backDiv.style.left = holdPosition + 100 + "px";
+
+        topDiv.style.left = holdPosition + 100 + "px";
+
+        console.log(newPerson.style.left);
+
+        let holdLeft = parseInt(newPerson.style.left);
+
+        // Can use this to determine if player should lose 
+        if(holdLeft > 1100 && !hasBeenClicked){
+            MindReader.transferReset();
+        }
+
     }, 100)
 
 
+    if(randomizePerson != 6){
+
+        let health = 100;
+        let fullWidth = parseInt(topDiv.style.width);
+
+        newPerson.addEventListener("click", function(){
+
+            if(health > 0){
+                health -= 50; 
+                topDiv.style.width = Math.floor(fullWidth * health/100) + "px";
+    
+            } else if (health <= 0){
+
+            newPerson.parentNode.removeChild(newPerson);
+            labelName.parentNode.removeChild(labelName);
+            backDiv.parentNode.removeChild(backDiv);
+            topDiv.parentNode.removeChild(topDiv);
+            hasBeenClicked = true; 
+            playAudio.play();
+
+         }
+        })
+    }
+
+    if(randomizePerson == 6){
+
+        let health = 100;
+        let fullWidth = parseInt(topDiv.style.width);
+
+        newPerson.addEventListener("click", function(){
+            
+            if(health > 0){
+                health -= 10; 
+                topDiv.style.width = Math.floor(fullWidth * health/100) + "px";
+            } else if(health <= 0){
+
+            newPerson.parentNode.removeChild(newPerson);
+            labelName.parentNode.removeChild(labelName);
+            backDiv.parentNode.removeChild(backDiv);
+            topDiv.parentNode.removeChild(topDiv);
+            hasBeenClicked = true; 
+            playAudio.play();
+
+            }
+        })
+    }
+
+
     document.body.appendChild(newPerson);
+    document.body.appendChild(backDiv);
+    document.body.appendChild(topDiv);
+    document.body.appendChild(labelName);
 
 }
 
