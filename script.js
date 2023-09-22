@@ -1,12 +1,15 @@
 
 
+
 // Holds size 
 let small;
+
+let bucceeSong;
 
 // Need quick and easy way to find out screen size 
 if(window.innerWidth < 768){
     small = true;
-}  else{
+}  else {
     small = false;
 }
 
@@ -52,6 +55,14 @@ let MindReader = {
         while (document.body.childElementCount > 0) {
             document.body.removeChild(document.body.firstChild);
         }
+    },
+
+    // Function used to call buccees
+    setPage7(){
+        this.pageValue = 7;
+        this.clearPage(); 
+       // this.setPage(); 
+        this.createPage();
     },
 
     // Function that will be used to create Page Based on value of this.pageValue
@@ -300,7 +311,7 @@ let MindReader = {
 
         
         if(small){
-            holdReset.style.marginTop = "30%"; 
+            holdReset.style.marginTop = "20%"; 
         } else{
             holdReset.style.marginTop = "18%"; 
         }
@@ -314,6 +325,12 @@ let MindReader = {
             MindReader.transferReset();
 
         })
+
+        // Creating text that says When you have number click next 
+        let createNewNumText = document.createElement("h3");
+        let holdcreateNewNumText = document.createElement("div");
+
+        
 
         // Add Text to div 
         holdReset.appendChild(resetText);
@@ -636,8 +653,8 @@ let MindReader = {
 
     createFifthPage(){
 
-        // Need to randomize addding divs to page (Val will be 0-9)
-        let randomizeVal = Math.floor(Math.random() * 10);
+        // Need to randomize addding divs to page (Val will be 0-8)
+        let randomizeVal = Math.floor(Math.random() * 9);
 
         // Need to make 99 values 
         for(let i = 0; i <= 99; i++){
@@ -870,6 +887,18 @@ let MindReader = {
 
     createQuestForBucees(){
 
+        console.log("Bucees"); 
+
+        bucceeSong = new Audio("bucSong.mp3")
+
+        bucceeSong.loop = true;
+
+        bucceeSong.play();
+
+        let holdPeopleArray = [];
+
+        // Creates new person who is seekeing bucees 
+
     }
 
 
@@ -896,6 +925,81 @@ MindReader.setPage();
 MindReader.clearPage(); 
 
 MindReader.createPage();
+
+
+// Add event listener for clicking left 
+
+document.body.addEventListener("keydown", (e) =>{
+  
+    // Need to clear background and set buccees 
+    if(e.key == "t"){
+    
+        MindReader.setPage7();
+        createSomeone();
+   }
+})
+
+
+
+// Need to get image from array 
+// Need to move image toward right side of screen 
+// Need to detect clicks on person 
+// Can check if x coordinate is greater than a certain value to say they made it to buc ees 
+function createSomeone(){
+
+    let holdPosition = 50; 
+
+
+    // Person will be img with set height 
+    let newPerson = document.createElement("img");
+    newPerson.style.height = "300px";
+    newPerson.style.width = "300px"; 
+    newPerson.style.position = "absolute";
+
+    // Consistently sized images by filling image container 
+    newPerson.style.objectFit = "cover";
+
+    
+
+    // Value will be 0-6
+    let randomizePerson = Math.floor(Math.random() * 7);
+
+    // generates random speed for person 
+    let randomizeSpeed = Math.floor(Math.random() * 12);
+
+    switch(randomizePerson){
+        case 0: 
+        newPerson.src = "img/Dylan.png";
+        break;
+        case 1: 
+        newPerson.src = "img/Justin-Hinged.png";
+        break;
+        case 2: 
+        newPerson.src = "img/Michael-Full-Power.png";
+        break;
+        case 3: 
+        newPerson.src = "img/Michael-holding-back.png";
+        break; 
+        case 4: 
+        newPerson.src = "img/Tanner.png";
+        break; 
+        case 5:
+        newPerson.src = "img/Vanessa.png";
+        break; 
+        case 6: 
+        newPerson.src = "img/Justin-unhinged.png";
+        break;
+    }
+
+    setInterval(function(){
+        holdPosition += randomizeSpeed;
+        newPerson.style.left = holdPosition + "px";
+    }, 100)
+
+
+    document.body.appendChild(newPerson);
+
+}
 
 
 

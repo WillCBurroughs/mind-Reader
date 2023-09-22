@@ -40,3 +40,11 @@ Add button that calls function to add 1 to pageValue. Then call function that wi
 ## Finished version
 
 After making a version that has all of the basic conditions that I need. I think I'm going back through the code to make Everything look more like in the file provided (Though I really have to keep myself from making the fun project first ;) 
+
+## Stretch goal 
+
+Need to make screenshots with photos of everyone. For first version of game just play audio, need to add reset button that works. 
+
+For second version need to have new Bucee people move across the screen. If person makes it to div on far right they are in the bucee zone and we move back to zone 1.
+
+For third version need to have users spawn at different Y-cordinates. Can have health bar and stats such as speed that we can change based on level and can think about adding bosses. 
