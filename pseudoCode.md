@@ -36,3 +36,20 @@ Make a javascript object and add methods that will create all the objects on the
 ## Second Version
 
 Add button that calls function to add 1 to pageValue. Then call function that will createPages based on pageValue. 
+
+## Finished version
+
+After making a version that has all of the basic conditions that I need. I think I'm going back through the code to make Everything look more like in the file provided (Though I really have to keep myself from making the fun project first ;) 
+
+## Stretch goal 
+
+Need to make screenshots with photos of everyone. For first version of game just play audio, need to add reset button that works. (Done)
+
+For second version need to have new Bucee people move across the screen. If person makes it to div on far right they are in the bucee zone and we move back to zone 1. (Done)
+
+For third version need to have users spawn at different Y-cordinates. (Done) Can have health bar and stats such as speed that we can change based on level and can think about adding bosses. 
+
+Can add really nice title on top of page and something that signifies buc ees on the right side of the page. (Done)
+
+Can add health bar and conditions for boss (Justin Unhinged). For health bar, can add div two divs one that has lower Z-index. Resize
+top div based on how much health is remaining. 
